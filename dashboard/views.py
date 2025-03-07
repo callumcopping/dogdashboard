@@ -4,6 +4,9 @@ from .forms import ClientForm, PetForm, BookingForm, UploadFormForm
 from django.http import JsonResponse
 from django.core.serializers import serialize
 
+def home_redirect(request):
+    return redirect('/dashboard/')
+
 def dashboard(request):
     return render(request, 'dashboard/dashboard.html')
 

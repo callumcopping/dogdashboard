@@ -22,6 +22,7 @@ from dashboard import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home_redirect, name='home_redirect'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('dashboard/clients/', views.client_list, name='client_list'),
     path('dashboard/pets/', views.pet_list, name='pet_list'),
