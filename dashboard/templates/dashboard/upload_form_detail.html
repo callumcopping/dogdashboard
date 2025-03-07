@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Form Detail</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Form for {{ upload_form.client.name }}</h1>
+        <p>Pet: {{ upload_form.pet.name }}</p>
+        <p>Submitted at: {{ upload_form.submitted_at }}</p>
+        <a href="{{ upload_form.document.url }}">Download Document</a>
+        <a href="{% url 'delete_upload_form' upload_form.id %}" class="delete-button">Delete Form</a>
+    </div>
+</body>
+</html>

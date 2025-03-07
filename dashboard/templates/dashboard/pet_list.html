@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pets</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Pets</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Breed</th>
+                    <th>Age</th>
+                    <th>Owner</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pet in pets %}
+                    <tr>
+                        <td><a href="{% url 'pet_detail' pet.id %}">{{ pet.name }}</a></td>
+                        <td>{{ pet.breed }}</td>
+                        <td>{{ pet.age }}</td>
+                        <td>{{ pet.owner.name }}</td>
+                        <td>{{ pet.notes }}</td>
+                        <td>
+                            <a href="{% url 'delete_pet' pet.id %}" class="delete-button">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

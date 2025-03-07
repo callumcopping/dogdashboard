@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Forms</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Forms</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Pet</th>
+                    <th>Submitted At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for form in upload_forms %}
+                    <tr>
+                        <td>{{ form.client.name }}</td>
+                        <td>{{ form.pet.name }}</td>
+                        <td>{{ form.submitted_at }}</td>
+                        <td>
+                            <a href="{% url 'upload_form_detail' form.id %}">View</a>
+                            <a href="{{ form.document.url }}">Download</a>
+                            <a href="{% url 'delete_upload_form' form.id %}" class="delete-button">Delete</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">No upload forms found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

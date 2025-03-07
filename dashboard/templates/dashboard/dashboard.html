@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <div class="grid">
+            <div class="card">
+                <h2>Clients</h2>
+                <a href="{% url 'client_list' %}" class="add-button">View Clients</a>
+                <a href="{% url 'add_client' %}" class="add-button">Add Client</a>
+            </div>
+            <div class="card">
+                <h2>Pets</h2>
+                <a href="{% url 'pet_list' %}" class="add-button">View Pets</a>
+                <a href="{% url 'add_pet' %}" class="add-button">Add Pet</a>
+            </div>
+            <div class="card">
+                <h2>Bookings</h2>
+                <a href="{% url 'booking_list' %}" class="add-button">View Bookings</a>
+                <a href="{% url 'add_booking' %}" class="add-button">Add Booking</a>
+            </div>
+            <div class="card">
+                <h2>Upload Forms</h2>
+                <a href="{% url 'upload_form_list' %}" class="add-button">View Upload Forms</a>
+                <a href="{% url 'add_upload_form' %}" class="add-button">Add Upload Form</a>
+            </div>
+        </div>
+        <div id="calendar"></div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                events: '/dashboard/booking_events/',
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                }
+            });
+        });
+    </script>
+</body>
+</html>

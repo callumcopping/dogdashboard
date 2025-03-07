@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Detail</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Booking for {{ booking.pet.name }}</h1>
+        <p>Check-in: {{ booking.check_in }}</p>
+        <p>Check-out: {{ booking.check_out }}</p>
+        <a href="{% url 'delete_booking' booking.id %}" class="delete-button">Delete Booking</a>
+    </div>
+</body>
+</html>
